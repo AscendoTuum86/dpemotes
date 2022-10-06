@@ -134,7 +134,9 @@ function EmoteCancel()
         if LocalPlayer.state.ptfx then
             PtfxStop()
         end
-        ClearPedTasks(ply)
+        if IsEntityPlayingAnim(ply, ChosenDict, ChosenAnimation, 3) then
+            StopAnimTask(ply, ChosenDict, ChosenAnimation, 2.0)
+        end
         DetachEntity(ply, true, false)
         CancelSharedEmote(ply)
         DestroyAllProps()
